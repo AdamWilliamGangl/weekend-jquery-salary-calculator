@@ -7,14 +7,16 @@ $(document).ready(readyNow);
 
 function readyNow() {
     console.log("DOM is loaded!");
+    $('#submitBtn').on('click', addNewEmployee)
 }
 
 //1a. an input form that collects first name, last name, ID number, job title,
 // annual salary.
 function addNewEmployee() {
+    console.log('Hello!')
     //Created new varaibles to take in the value of the input fields
-    const firstName = $('#firstname').val();
-    const lastName = $('#lastname').val();
+    const firstName = $('#firstName').val();
+    const lastName = $('#lastName').val();
     const id = $('#id').val();
     const title = $('#title').val();
     const annualSalary = $('#annualSalary').val();
@@ -22,14 +24,15 @@ function addNewEmployee() {
     //form validation part 1, ensure every field is filled.
     if (firstName && lastName && id && title && annualSalary) {
         let addNewEmployeeObject = {
-            employeeFirstName = firstName,
-            employeeLastName = lastName,
-            employeeID = id,
-            employeeTitle = title,
-            employeeAnnualSalary = annualSalary
+            employeeFirstName: firstName,
+            employeeLastName: lastName,
+            employeeID: id,
+            employeeTitle: title,
+            employeeAnnualSalary: annualSalary
         };
         employeeDatabase.push(addNewEmployeeObject);
-        render()
+        render();
+        resetInputFields();
     }
     //form validation part 2, if a field is left blank- give an alert.
     else {
@@ -38,6 +41,15 @@ function addNewEmployee() {
 }
 //function to render items to the DOM
 function render(){
+    for (let employee of employeeDatabase){
+        $('.employeeTable').append(`
+        <td>${employee.employeeFirstName}</td>
+        <td>${employee.employeeLastName}</td>
+        <td>${employee.employeeID}</td>
+        <td>${employee.employeeTitle}</td>
+        <td>${employee.employeeAnnualSalary}</td>
+        `)
+    }
 
 }
 
