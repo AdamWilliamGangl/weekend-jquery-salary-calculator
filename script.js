@@ -16,6 +16,7 @@ $(document).ready(readyNow);
 function readyNow() {
     console.log("DOM is loaded!");
     $('#submitBtn').on('click', addNewEmployee)
+    $('.employeeTable').on('click', '.deleteBtn', deleteEmployee)
 }
 
 
@@ -52,6 +53,24 @@ function addNewEmployee() {
         alert('You have left a field blank!')
     }
 }
+
+//function to delete employees.
+function deleteEmployee() {
+  
+    //new array to update the state and render to the DOM.
+    let newEmployees = [];
+    //this new constant will help to target the entire employee to delete
+    const employeeToDelete = $(this).parent().siblings().first().text();
+
+    for (let employee of employeeDatabase) {
+      if (employee.employeeFirstName !== employeeToDelete){
+        newEmployees.push(employee);
+      }
+    }
+    employeeDatabase = newEmployees;
+    render();
+}
+
 //function to render items to the DOM
 function render() {
     $('.employeeTable').empty();
@@ -71,10 +90,9 @@ function render() {
         <h4>Total Monthly:</h4>
         <p>$${employeeCost}</p>
         `);
-
-
 }
 
+//function to reset the input field values after the submit button is clicked.
 function resetInputFields() {
     const firstName = $('#firstName').val("");
     const lastName = $('#lastName').val("");
@@ -83,6 +101,7 @@ function resetInputFields() {
     const annualSalary = $('#annualSalary').val("");
 }
 
+//function to calculate the monthly cost of all employee salaries.
 function calculateMonthlyCost() {
 
     let employeeCostSum = 0;
@@ -97,7 +116,6 @@ function calculateMonthlyCost() {
     }
     employeeCost = employeeCost.toLocaleString("en-us")
     console.log('employee Cost', employeeCost);
-
 }
 
 //3a. Create a delete button that removes an employee from the DOM.
