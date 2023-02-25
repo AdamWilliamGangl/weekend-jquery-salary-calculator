@@ -17,3 +17,7 @@ th, td{
     border-collapse: collapse;
 
 }
+
+.red {
+    background-color: red;
+}

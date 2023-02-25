@@ -68,8 +68,9 @@ function render() {
         `);
     };
     $('.monthlyCostContainer').html(`
+        <h4>Total Monthly:</h4>
         <p>$${employeeCost}</p>
-        `); //need to append the sum of all employee salaries here.
+        `);
 
 
 }
@@ -88,16 +89,16 @@ function calculateMonthlyCost() {
     let employeeDatabaseCopy = employeeDatabase.slice(1)
     employeeCost = [];
     for (let cost of employeeDatabaseCopy) {
-        employeeCostSum += 1 * cost.employeeAnnualSalary; //This needs to not concatenate.
+        employeeCostSum += 1 * cost.employeeAnnualSalary;
     }
     employeeCost = Math.round(employeeCostSum / 12);
+    if (employeeCost > 20000) {
+        $('.monthlyCostContainer').addClass('red')
+    }
     employeeCost = employeeCost.toLocaleString("en-us")
     console.log('employee Cost', employeeCost);
+
 }
-
-
-//2c. If monthly costs exceed $20,000, add a red background color to total monthly cost.
-
 
 //3a. Create a delete button that removes an employee from the DOM.
 
