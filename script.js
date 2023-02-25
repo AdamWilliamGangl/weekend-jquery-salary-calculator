@@ -1,5 +1,3 @@
-console.log('Batman!')
-
 let employeeDatabase = [{
     employeeFirstName: 'First Name',
     employeeLastName: 'Last Name',
@@ -8,8 +6,8 @@ let employeeDatabase = [{
     employeeAnnualSalary: 'Annual Salary',
     employeeButton: ''
 },];
-let employeeCost = [];
 
+let employeeCost = [];
 
 $(document).ready(readyNow);
 
@@ -19,12 +17,9 @@ function readyNow() {
     $('.employeeTable').on('click', '.deleteBtn', deleteEmployee)
 }
 
-
-//1a. an input form that collects first name, last name, ID number, job title,
-// annual salary.
+// a function to collect employee info through input fields.
 function addNewEmployee() {
-    console.log('Here are the employees in the database', employeeDatabase)
-    //Created new varaibles to take in the value of the input fields
+    //Created new variabbles to take in the value of the input fields
     const firstName = $('#firstName').val();
     const lastName = $('#lastName').val();
     const id = $('#id').val();
@@ -56,16 +51,16 @@ function addNewEmployee() {
 
 //function to delete employees.
 function deleteEmployee() {
-  
+
     //new array to update the state and render to the DOM.
     let newEmployees = [];
     //this new constant will help to target the entire employee to delete
     const employeeToDelete = $(this).parent().siblings().first().text();
 
     for (let employee of employeeDatabase) {
-      if (employee.employeeFirstName !== employeeToDelete){
-        newEmployees.push(employee);
-      }
+        if (employee.employeeFirstName !== employeeToDelete) {
+            newEmployees.push(employee);
+        }
     }
     employeeDatabase = newEmployees;
     calculateMonthlyCost();
@@ -82,7 +77,7 @@ function render() {
         <td class=etc>${employee.employeeLastName}</td>
         <td class=etc>${employee.employeeID}</td>
         <td class=etc>${employee.employeeTitle}</td>
-        <td class=etc>${employee.employeeAnnualSalary}</td>
+        <td class=etc>${employee.employeeAnnualSalary} </td>
         <td class=etc>${employee.employeeButton}</td>
         <tr class=etc>
         `);
@@ -111,11 +106,15 @@ function calculateMonthlyCost() {
     for (let cost of employeeDatabaseCopy) {
         employeeCostSum += 1 * cost.employeeAnnualSalary;
     }
+    //rounding out our costs
     employeeCost = Math.round(employeeCostSum / 12);
+
+    //changing display to red if monthly costs exceed 20,000
     if (employeeCost > 20000) {
         $('.monthlyCostContainer').addClass('red')
     }
+
+    //converting to dollar display
     employeeCost = employeeCost.toLocaleString("en-us")
-    console.log('employee Cost', employeeCost);
 }
 
