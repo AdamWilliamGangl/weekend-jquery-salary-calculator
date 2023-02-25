@@ -1,7 +1,15 @@
 console.log('Batman!')
 
-let employeeDatabase = [];
+let employeeDatabase = [{
+    employeeFirstName: 'First Name',
+    employeeLastName: 'Last Name',
+    employeeID: 'ID',
+    employeeTitle: 'Title',
+    employeeAnnualSalary: 'Annual Salary',
+    employeeButton: ''
+},];
 let employeeCost = [];
+
 
 $(document).ready(readyNow);
 
@@ -9,6 +17,7 @@ function readyNow() {
     console.log("DOM is loaded!");
     $('#submitBtn').on('click', addNewEmployee)
 }
+
 
 //1a. an input form that collects first name, last name, ID number, job title,
 // annual salary.
@@ -20,6 +29,7 @@ function addNewEmployee() {
     const id = $('#id').val();
     const title = $('#title').val();
     const annualSalary = $('#annualSalary').val();
+    const button = `<button class=deleteBtn> Delete </button>`
 
     //form validation part 1, ensure every field is filled.
     if (firstName && lastName && id && title && annualSalary) {
@@ -28,7 +38,8 @@ function addNewEmployee() {
             employeeLastName: lastName,
             employeeID: id,
             employeeTitle: title,
-            employeeAnnualSalary: annualSalary
+            employeeAnnualSalary: annualSalary,
+            employeeButton: button
         };
         employeeDatabase.push(addNewEmployeeObject);
 
@@ -52,7 +63,8 @@ function render() {
         <td>${employee.employeeID}</td>
         <td>${employee.employeeTitle}</td>
         <td>${employee.employeeAnnualSalary}</td>
-        </tr>
+        <td>${employee.employeeButton}</td>
+        <tr>
         `);
     };
     $('.monthlyCostContainer').html(`
@@ -73,11 +85,13 @@ function resetInputFields() {
 function calculateMonthlyCost() {
 
     let employeeCostSum = 0;
+    let employeeDatabaseCopy = employeeDatabase.slice(1)
     employeeCost = [];
-    for (let cost of employeeDatabase) {
-        employeeCostSum += cost.employeeAnnualSalary; //This needs to not concatenate.
+    for (let cost of employeeDatabaseCopy) {
+        employeeCostSum += 1 * cost.employeeAnnualSalary; //This needs to not concatenate.
     }
-    employeeCost = employeeCostSum;
+    employeeCost = Math.round(employeeCostSum / 12);
+    employeeCost = employeeCost.toLocaleString("en-us")
     console.log('employee Cost', employeeCost);
 }
 
@@ -88,4 +102,3 @@ function calculateMonthlyCost() {
 //3a. Create a delete button that removes an employee from the DOM.
 
 //3b. Remove the employees salary from the reported total.
-
