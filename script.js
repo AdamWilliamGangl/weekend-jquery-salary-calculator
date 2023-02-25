@@ -77,14 +77,14 @@ function render() {
     $('.employeeTable').empty();
     for (let employee of employeeDatabase) {
         $('.employeeTable').append(`
-        <tr>
-        <td>${employee.employeeFirstName}</td>
-        <td>${employee.employeeLastName}</td>
-        <td>${employee.employeeID}</td>
-        <td>${employee.employeeTitle}</td>
-        <td>${employee.employeeAnnualSalary}</td>
-        <td>${employee.employeeButton}</td>
-        <tr>
+        <tr class=etc>
+        <td class=etc>${employee.employeeFirstName}</td>
+        <td class=etc>${employee.employeeLastName}</td>
+        <td class=etc>${employee.employeeID}</td>
+        <td class=etc>${employee.employeeTitle}</td>
+        <td class=etc>${employee.employeeAnnualSalary}</td>
+        <td class=etc>${employee.employeeButton}</td>
+        <tr class=etc>
         `);
     };
     $('.monthlyCostContainer').html(`
@@ -119,6 +119,3 @@ function calculateMonthlyCost() {
     console.log('employee Cost', employeeCost);
 }
 
-//3a. Create a delete button that removes an employee from the DOM.
-
-//3b. Remove the employees salary from the reported total.

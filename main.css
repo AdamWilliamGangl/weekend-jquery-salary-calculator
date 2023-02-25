@@ -1,23 +1,40 @@
+
+
+h1{
+    text-align: center;
+    color: white;
+    background-color: gray;
+}
+
 body {
-    margin: 50px;
+    margin: 20px;
     font-family: Arial, Helvetica, sans-serif;
     
 }
 
-table {
+.employeeTable {
     border: 1px solid black;
     border-spacing: 0px;
     border-collapse: collapse;
     width: 100%;
 }
 
-th, td{
+.etc{
     border: 1px solid black;
     border-spacing: 0px;
     border-collapse: collapse;
-
 }
 
 .red {
     background-color: red;
 }
+#submitBtn {
+    float:right
+}
+
+/* tr:nth-child(even) {
+    background: #CCC
+}
+tr:nth-child(odd) {
+    background: #FFF
+} */
