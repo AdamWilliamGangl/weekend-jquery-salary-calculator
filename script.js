@@ -1,11 +1,4 @@
-let employeeDatabase = [{
-    employeeFirstName: 'First Name',
-    employeeLastName: 'Last Name',
-    employeeID: 'ID',
-    employeeTitle: 'Title',
-    employeeAnnualSalary: 'Annual Salary',
-    employeeButton: ''
-},];
+let employeeDatabase = [];
 
 let employeeCost = [];
 
@@ -79,7 +72,7 @@ function render() {
         <td class=etc>${employee.employeeTitle}</td>
         <td class=etc>${employee.employeeAnnualSalary} </td>
         <td class=etc>${employee.employeeButton}</td>
-        <tr class=etc>
+        </tr>
         `);
     };
     $('.monthlyCostContainer').html(`
@@ -101,9 +94,8 @@ function resetInputFields() {
 function calculateMonthlyCost() {
 
     let employeeCostSum = 0;
-    let employeeDatabaseCopy = employeeDatabase.slice(1)
     employeeCost = [];
-    for (let cost of employeeDatabaseCopy) {
+    for (let cost of employeeDatabase) {
         employeeCostSum += 1 * cost.employeeAnnualSalary;
     }
     //rounding out our costs

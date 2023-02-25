@@ -19,6 +19,25 @@ body {
     width: 100%;
 }
 
+.borders {
+    border: 1px solid black;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    width: 100%;
+}
+.littleBorders {
+    border: 1px solid black;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+th {
+    border: 1px solid black;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    text-align: left;
+}
+
 .etc{
     border: 1px solid black;
     border-spacing: 0px;
