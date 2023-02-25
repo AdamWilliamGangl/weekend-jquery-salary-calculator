@@ -68,6 +68,7 @@ function deleteEmployee() {
       }
     }
     employeeDatabase = newEmployees;
+    calculateMonthlyCost();
     render();
 }
 
