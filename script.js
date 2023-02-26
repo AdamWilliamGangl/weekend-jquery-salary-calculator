@@ -104,6 +104,9 @@ console.log('this is the employee salary', employeeDatabase.employeeAnnualSalary
     if (employeeCost > 20000) {
         $('.monthlyCostContainer').addClass('red')
     }
+    else{
+        $('.monthlyCostContainer').removeClass('red')
+    }
 
     //converting to dollar display
     employeeCost = employeeCost.toLocaleString("en-us")
