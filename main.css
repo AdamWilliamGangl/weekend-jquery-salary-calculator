@@ -52,6 +52,13 @@ th {
     float:right
 }
 
+.foot{
+    background-color: gray;
+}
+
+th, td {
+    width: 50px;
+}
 /* tr:nth-child(even) {
     background: #CCC
 }

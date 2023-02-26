@@ -72,7 +72,6 @@ function render() {
         <td class=etc>${employee.employeeTitle}</td>
         <td class=etc>${employee.employeeAnnualSalary} </td>
         <td class=etc>${employee.employeeButton}</td>
-        </tr>
         `);
     };
     $('.monthlyCostContainer').html(`
@@ -92,7 +91,7 @@ function resetInputFields() {
 
 //function to calculate the monthly cost of all employee salaries.
 function calculateMonthlyCost() {
-
+console.log('this is the employee salary', employeeDatabase.employeeAnnualSalary)
     let employeeCostSum = 0;
     employeeCost = [];
     for (let cost of employeeDatabase) {
