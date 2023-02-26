@@ -62,15 +62,20 @@ function deleteEmployee() {
 
 //function to render items to the DOM
 function render() {
+    let employeeSalary = 0;
+    let employeeSalaryConversion = 0;
     $('.employeeTable').empty();
     for (let employee of employeeDatabase) {
+        employeeSalary = employee.employeeAnnualSalary;
+        employeeSalaryConversion = employeeSalary.toLocaleString("en-us");
+        console.log('this is the value of employeeSalaryConversion:', employeeSalaryConversion);
         $('.employeeTable').append(`
         <tr class=etc>
         <td class=etc>${employee.employeeFirstName}</td>
         <td class=etc>${employee.employeeLastName}</td>
         <td class=etc>${employee.employeeID}</td>
         <td class=etc>${employee.employeeTitle}</td>
-        <td class=etc>${employee.employeeAnnualSalary} </td>
+        <td class=etc>${employeeSalaryConversion} </td>
         <td class=etc>${employee.employeeButton}</td>
         `);
     };
@@ -91,7 +96,6 @@ function resetInputFields() {
 
 //function to calculate the monthly cost of all employee salaries.
 function calculateMonthlyCost() {
-console.log('this is the employee salary', employeeDatabase.employeeAnnualSalary)
     let employeeCostSum = 0;
     employeeCost = [];
     for (let cost of employeeDatabase) {
@@ -104,7 +108,7 @@ console.log('this is the employee salary', employeeDatabase.employeeAnnualSalary
     if (employeeCost > 20000) {
         $('.monthlyCostContainer').addClass('red')
     }
-    else{
+    else {
         $('.monthlyCostContainer').removeClass('red')
     }
 
